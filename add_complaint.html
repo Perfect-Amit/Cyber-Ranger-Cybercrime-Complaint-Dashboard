@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-4">Add New Cyber Crime Complaint</h2>
+<form method="POST" class="row g-3">
+    <div class="col-md-6">
+        <label for="crime_type" class="form-label">Crime Type</label>
+        <input type="text" class="form-control" id="crime_type" name="crime_type" required>
+    </div>
+    <div class="col-md-6">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location" required>
+    </div>
+    <div class="col-12">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+    </div>
+    <div class="col-md-6">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <div class="col-md-6">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select" id="status" name="status">
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Closed">Closed</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit Complaint</button>
+    </div>
+</form>
+{% endblock %}

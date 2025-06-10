@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4 text-center">Cyber Crime Complaint Dashboard</h1>
+
+<div class="d-flex justify-content-center mb-4">
+    <a href="{{ url_for('add_complaint') }}" class="btn custom-btn me-3">➕ Add Complaint</a>
+    <a href="{{ url_for('view_data') }}" class="btn custom-btn">📊 View All Data</a>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                {{ trend_chart|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                {{ type_chart|safe }}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                {{ geo_chart|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                {{ time_chart|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,18 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for
-from database import init_db, get_db, add_complaint, get_all_complaints, get_complaints_by_type
+from database import close_db, init_db, get_db, add_complaint, get_all_complaints, get_complaints_by_type
 from utils.visualization import create_crime_trend_chart, create_crime_by_type_chart, create_geo_distribution_chart, create_time_analysis_chart
 import os
 
 app = Flask(__name__)
 app.config['DATABASE'] = 'cybercrimes.db'
-app.config['SECRET_KEY'] = 'your-secret-key-here'
+app.config['SECRET_KEY'] = 'Amit@Hero'
 
 # Initialize database
-init_db(app)
+def initialize_database(app):
+    init_db()
+
+@app.teardown_appcontext
+def shutdown_database(exception=None):
+    close_db(exception)
 
 @app.route('/')
 def dashboard():
     # Get data for visualizations
+    init_db(app)
     complaints = get_all_complaints()
     
     # Create visualizations
